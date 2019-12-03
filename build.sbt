@@ -1,5 +1,3 @@
-import bintray.Plugin.bintrayPublishSettings
-
 name := "msgpack4s"
 
 // Remove -SNAPSHOT from the version before publishing a release. Don't forget to change the version to
@@ -8,18 +6,14 @@ version := "0.4.3"
 
 organization := "org.velvia"
 
-scalaVersion := "2.10.4"
+crossScalaVersions := Seq("2.10.4", "2.11.5", "2.12.8", "2.13.1")
 
-crossScalaVersions := Seq("2.10.4", "2.11.5")
+unmanagedSourceDirectories in Compile ++= Seq(baseDirectory.value / "src")
 
-unmanagedSourceDirectories in Compile <++= Seq(baseDirectory(_ / "src" )).join
-
-unmanagedSourceDirectories in Test <++= Seq(baseDirectory(_ / "test" )).join
+unmanagedSourceDirectories in Test ++= Seq(baseDirectory.value / "test")
 
 // Testing deps
-libraryDependencies ++= Seq("org.scalatest" %% "scalatest" % "2.2.0" % "test",
+libraryDependencies ++= Seq("org.scalatest" %% "scalatest" % "3.0.8" % "test",
                             "org.mockito" % "mockito-all" % "1.9.0" % "test")
-
-Seq(bintrayPublishSettings: _*)
 
 licenses += ("Apache-2.0", url("http://choosealicense.com/licenses/apache/"))

@@ -2,9 +2,8 @@ package org.velvia
 
 import util.Random
 import org.scalatest.FunSpec
-import org.scalatest.matchers.ShouldMatchers
 
-class MsgPackPerfSpec extends FunSpec with ShouldMatchers {
+class MsgPackPerfSpec extends FunSpec {
   def genMap() = {
     Map("eventType" -> Random.nextInt(25),
         "user" -> "abcDEFghiDEF",
